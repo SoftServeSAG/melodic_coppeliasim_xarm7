@@ -92,7 +92,7 @@ RUN printf '\n\n Fechting and Installing V-REP.. \n\n'
 
 ##Installation CoppeliaSim 4.0.0: Download CoppeliaSim from link (may be outdated) and then Install
 RUN wget -P ${copp_ws} http://www.coppeliarobotics.com/files/CoppeliaSim_Edu_V4_0_0_Ubuntu18_04.tar.xz \
-&& tar -C ${vrep_ws} xf ${copp_ws}/CoppeliaSim_Edu_V4_0_0_Ubuntu18_04.tar.xz \
+&& tar -C ${vrep_ws} -xpJf ${copp_ws}/CoppeliaSim_Edu_V4_0_0_Ubuntu18_04.tar.xz \
 && sudo apt-get update -y && sudo apt-get install --no-install-recommends -y \
 libgl1-mesa-dev libavcodec-dev libavformat-dev libswscale-dev libopencv*
 
