@@ -48,6 +48,7 @@ RUN apt-get update -y && apt-get install --no-install-recommends -y \
  python-rosinstall \
  python-rosinstall-generator \
  python-wstool build-essential \
+ ros-kinetic-catkin python-catkin-tools 
 && pip3 install numpy \
 && rm -rf /var/lib/apt/lists/* \
 && apt-get clean
