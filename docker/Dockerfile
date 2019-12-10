@@ -8,6 +8,10 @@ ARG uid=1000
 ARG shell=/bin/bash
 ARG copp_ws="/home/${user}"
 
+# define ros distribution version
+ARG ROS_DISTRO melodic
+ARG PROJECT RTOS_CAPP
+
 # 
 # Leave as empty string "" if you don't want any nvidia drivers to be installed.
 # Otherwise, manually set the link to download the NVidia driver model for your system,
@@ -84,8 +88,23 @@ USER ${user}
 # ========================== ROS Workspace Setup ==========================
 #
 
-RUN echo "source /opt/ros/melodic/setup.bash" >> $HOME/.bashrc
+RUN sudo rosdep init
+RUN sudo rosdep fix-permissions && rosdep update  \
+    && echo "source "/opt/ros/${ROS_DISTRO}/setup.bash"" >> /home/${user}/.bashrc
+    
+RUN mkdir -p /home/${user}/catkin_ws/$PROJECT/base/src && \
+mkdir /home/${user/catkin_ws/$PROJECT/base/logs
 
+RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> $HOME/.bashrc
+
+RUN /bin/bash -c '. /opt/ros/$ROS_DISTRO/setup.bash; catkin_init_workspace /home/$DOCKER_USER/catkin_ws/$PROJECT/base/src'
+RUN /bin/bash -c '. /opt/ros/$ROS_DISTRO/setup.bash; cd /home/$DOCKER_USER/catkin_ws/$PROJECT/base/; catkin init'
+RUN /bin/bash -c '. /opt/ros/$ROS_DISTRO/setup.bash; cd /home/$DOCKER_USER/catkin_ws/$PROJECT/base/; catkin_make'
+RUN echo "source /home/$DOCKER_USER/catkin_ws/$PROJECT/base/devel/setup.bash" >> /home/$DOCKER_USER/.bashrc
+
+RUN sudo rm -rf /home/$DOCKER_USER/catkin_ws/$PROJECT/base/src/*.txt 
+
+RUN /bin/bash -c '. /opt/ros/$ROS_DISTRO/setup.bash; cd /home/$DOCKER_USER/catkin_ws/$PROJECT/base/; catkin build'
 
 #
 # ========================== Download and Install V-REP  ==========================
