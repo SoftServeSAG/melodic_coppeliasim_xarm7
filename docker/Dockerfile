@@ -9,8 +9,8 @@ ARG shell=/bin/bash
 ARG copp_ws="/home/${user}"
 
 # define ros distribution version
-ARG ROS_DISTRO melodic
-ARG PROJECT RTOS_CAPP
+ARG ROS_DISTRO=melodic
+ARG PROJECT=RTOS_CAPP
 
 # 
 # Leave as empty string "" if you don't want any nvidia drivers to be installed.
