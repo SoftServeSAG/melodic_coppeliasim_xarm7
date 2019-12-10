@@ -54,7 +54,7 @@ RUN apt-get update -y && apt-get install --no-install-recommends -y \
  python-wstool build-essential \
  ros-melodic-catkin python-catkin-tools \
  ros-melodic-moveit ros-melodic-moveit-plugins \ 
- ros-kinetic-moveit-planners \ 
+ ros-melodic-moveit-planners \ 
 && pip3 install numpy \
 && rm -rf /var/lib/apt/lists/* \
 && apt-get clean
