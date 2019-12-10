@@ -99,12 +99,12 @@ RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> $HOME/.bashrc
 
 RUN /bin/bash -c '. /opt/ros/$ROS_DISTRO/setup.bash; catkin_init_workspace /home/${user}/catkin_ws/$PROJECT/base/src'
 RUN /bin/bash -c '. /opt/ros/$ROS_DISTRO/setup.bash; cd /home/${user}/catkin_ws/$PROJECT/base/; catkin init'
-RUN /bin/bash -c '. /opt/ros/$ROS_DISTRO/setup.bash; cd /home/${user}/catkin_ws/$PROJECT/base/; catkin_make'
+RUN /bin/bash -c '. /opt/ros/$ROS_DISTRO/setup.bash; cd /home/${user}/catkin_ws/$PROJECT/base/; catkin build'
 RUN echo "source /home/${user}/catkin_ws/$PROJECT/base/devel/setup.bash" >> /home/${user}/.bashrc
 
 RUN sudo rm -rf /home/${user}/catkin_ws/$PROJECT/base/src/*.txt 
 
-RUN /bin/bash -c '. /opt/ros/$ROS_DISTRO/setup.bash; cd /home/${user}/catkin_ws/$PROJECT/base/; catkin build'
+
 
 #
 # ========================== Download and Install V-REP  ==========================
