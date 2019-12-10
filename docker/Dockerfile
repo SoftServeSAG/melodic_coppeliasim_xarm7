@@ -88,7 +88,7 @@ USER ${user}
 # ========================== ROS Workspace Setup ==========================
 #
 
-RUN sudo rosdep init
+#RUN sudo rosdep init
 RUN sudo rosdep fix-permissions && rosdep update  \
     && echo "source "/opt/ros/${ROS_DISTRO}/setup.bash"" >> /home/${user}/.bashrc
     
