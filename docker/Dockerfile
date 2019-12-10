@@ -93,7 +93,7 @@ RUN sudo rosdep fix-permissions && rosdep update  \
     && echo "source "/opt/ros/${ROS_DISTRO}/setup.bash"" >> /home/${user}/.bashrc
     
 RUN mkdir -p /home/${user}/catkin_ws/$PROJECT/base/src && \
-mkdir /home/${user/catkin_ws/$PROJECT/base/logs
+mkdir /home/${user}/catkin_ws/$PROJECT/base/logs
 
 RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> $HOME/.bashrc
 
